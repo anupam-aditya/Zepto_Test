@@ -2,7 +2,14 @@ import "./index.css";
 import React, { useState, useEffect } from "react";
 
 export default function App() {
-	const allOptions = ["Anupam", "Aditya", "Test", "Zepto", "Assignment", "New"];
+	const allOptions = [
+		"Anupam",
+		"Aditya",
+		"Test",
+		"Zepto",
+		"Assignment",
+		"Frontend",
+	];
 	return <InputSearch suggestions={allOptions} />;
 }
 
@@ -19,7 +26,6 @@ const InputSearch = ({ suggestions }) => {
 	);
 
 	useEffect(() => {
-		// Whenever the input value changes, un-highlight any highlighted Input
 		if (inputValue !== "") {
 			setHighlightedInput(null);
 		}
@@ -32,14 +38,13 @@ const InputSearch = ({ suggestions }) => {
 	const handleKeyDown = (event) => {
 		if (event.key === "Backspace" && inputValue === "") {
 			if (highlightedInput !== null) {
-				// Delete the highlighted Input
 				const newSelectedItems = selectedItems.filter(
 					(_, index) => index !== highlightedInput
 				);
 				setSelectedItems(newSelectedItems);
 				setHighlightedInput(null);
 			} else if (selectedItems.length > 0) {
-				// Highlight the last Input
+				// Highlight the last chip
 				setHighlightedInput(selectedItems.length - 1);
 			}
 		}
@@ -74,16 +79,14 @@ const InputSearch = ({ suggestions }) => {
 				{selectedItems.map((item, index) => (
 					<div
 						key={index}
-						className={`Input ${
-							highlightedInput === index ? "highlighted" : ""
-						}`}
+						className={`chip ${highlightedChip === index ? "highlighted" : ""}`}
 						onClick={() => setHighlightedInput(index)}
 					>
 						{item}
 						<span
 							className="close"
 							onClick={(e) => {
-								e.stopPropagation(); // Prevent the Input click handler from firing
+								e.stopPropagation(); // Prevent the chip click handler from firing
 								handleDeleteItem(item, index);
 							}}
 						>
