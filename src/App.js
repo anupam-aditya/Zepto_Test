@@ -79,7 +79,9 @@ const InputSearch = ({ suggestions }) => {
 				{selectedItems.map((item, index) => (
 					<div
 						key={index}
-						className={`chip ${highlightedChip === index ? "highlighted" : ""}`}
+						className={`chip ${
+							highlightedInput === index ? "highlighted" : ""
+						}`}
 						onClick={() => setHighlightedInput(index)}
 					>
 						{item}
