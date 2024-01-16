@@ -2,15 +2,7 @@ import "./index.css";
 import React, { useState, useEffect } from "react";
 
 export default function App() {
-	const allOptions = [
-		"Anupam",
-		"Aditya",
-		"Test",
-		"Zepto",
-		"Assignment",
-		"New",
-		"Test",
-	];
+	const allOptions = ["Anupam", "Aditya", "Test", "Zepto", "Assignment", "New"];
 	return <InputSearch suggestions={allOptions} />;
 }
 
